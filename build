@@ -35,9 +35,7 @@ make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
 success_build(){
-	mka bacon -j16
-	send_zip=$(up out/target/product/mido/*zip)
-	tg $id "Build Succeed!
+	mka bacon -j16 && send_zip=$(up out/target/product/mido/*zip) && tg $id "Build Succeed!
 $send_zip"
 }
 

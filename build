@@ -34,6 +34,21 @@ make api-stubs-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
-mka bacon -j16 && send_zip=$(up out/target/product/mido/*zip) && tg $id "Build Succeed!
-$send_zip" || tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 2h
+success_build(){
+	mka bacon -j16
+	send_zip=$(up out/target/product/mido/*zip)
+	tg $id "Build Succeed!
+$send_zip"
+}
+
+failed_build(){
+	tmate -S /tmp/tmate.sock new-session -d
+	tmate -S /tmp/tmate.sock wait tmate-ready
+	send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
+	tg $id "Build Failed"
+	tg $id "$send_shell"
+	ccache -s
+	sleep 3h
+}
+success_build || failed_build
 ccache -s # Let's print ccache statistics finally

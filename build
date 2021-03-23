@@ -48,7 +48,7 @@ failed_build(){
 	tg $id "Build Failed"
 	tg $id "$send_shell"
 	ccache -s
-	sleep 3h
+	sleep 2h
 }
 success_build || failed_build
 ccache -s # Let's print ccache statistics finally

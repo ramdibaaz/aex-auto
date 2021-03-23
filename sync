@@ -11,3 +11,17 @@ git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8
+
+date
+git config --global user.name "Apon77"
+git config --global user.email "khalakuzzamanapon5@gmail.com"
+git config --global core.editor vim
+git config --global credential.helper store
+echo "https://apon77:$password@github.com" > ~/.git-credentials
+
+rm -rf external/motorola/faceunlock && rm -rf frameworks/base && rm -rf packages/apps/Settings && rm -rf vendor/aosp && rm -rf packages/services/Telecomm && rm -rf frameworks/native && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_external_faceunlock external/faceunlock && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_FaceUnlockService packages/apps/FaceUnlockService && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_native frameworks/native && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_services_Telecomm packages/services/Telecomm && git clone --depth 1 https://github.com/PixelPlusUI-Elle/packages_apps_Pixelizer packages/apps/Pixelizer && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_Settings packages/apps/Settings && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_vendor_aosp vendor/aosp && git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_base frameworks/base
+
+cd /tmp/rom
+rm -rf packages/apps/Settings/res-customisation/ packages/apps/Settings/src_customisation/ && cp -r packages/apps/Pixelizer/res/ packages/apps/Settings/res-customisation/ && cp -r packages/apps/Pixelizer/src/ packages/apps/Settings/src_customisation/
+
+date

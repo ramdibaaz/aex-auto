@@ -1,5 +1,7 @@
 #!/bin/bash
 cd /tmp/rom # Depends on where source got synced
+mkdir -p ~/.config/rclone
+echo "$rclone_config" > ~/.config/rclone/rclone.conf # Write rclone config found from env variable, so that cloud storage can be used to upload ccache
 
 # Normal build steps
 . build/envsetup.sh
@@ -35,8 +37,8 @@ make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
 success_build(){
-	mka bacon -j16 && send_zip=$(up out/target/product/mido/*zip) && tg $id "Build Succeed!
-$send_zip"
+	mka bacon -j16 && time rclone copy out/target/product/mido/*.zip apon:junk -P && send_zip=$(basename out/target/product/mido/*.zip) && tg $id "Build Succeed!
+https://https://roms.apon77.workers.dev/junk/$send_zip"
 }
 
 failed_build(){
@@ -50,3 +52,4 @@ failed_build(){
 }
 success_build || failed_build
 ccache -s # Let's print ccache statistics finally
+

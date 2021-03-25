@@ -38,7 +38,7 @@ make test-api-stubs-docs || echo no problem
 
 success_build(){
 	mka bacon -j16 && time rclone copy out/target/product/mido/*.zip apon:junk -P && send_zip=$(basename out/target/product/mido/*.zip) && tg $id "Build Succeed!
-https://https://roms.apon77.workers.dev/junk/$send_zip"
+https://roms.apon77.workers.dev/junk/$send_zip"
 }
 
 failed_build(){

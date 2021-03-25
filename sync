@@ -7,7 +7,7 @@ cd /tmp/rom
 repo init -q --no-repo-verify --depth=1 -u https://github.com/PixelPlusUI-Elle/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
 
 # Clone local manifest! So that no need to manually git clone repos or change hals, you can use normal git clone or rm and re clone, they will cost little more time, and you may get timeout! Let's make it quit and depth=1 too.
-git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b ppui3rd .repo/local_manifests
+git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b smokey .repo/local_manifests
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8
@@ -38,16 +38,16 @@ rm -rf packages/apps/Settings/res-customisation/ packages/apps/Settings/src_cust
 cp -r packages/apps/Pixelizer/res/ packages/apps/Settings/res-customisation/
 cp -r packages/apps/Pixelizer/src/ packages/apps/Settings/src_customisation/
 
-cd /tmp/rom/frameworks/base
-git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_base
-git fetch aponlab 11.x --depth=4
-git cherry-pick 8d1e4b98564a7ba65c2d8d357e83ba7d4d337940
-
-cd /tmp/rom/frameworks/opt/telephony
-git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_opt_telephony
-git fetch aponlab 11.x --depth=10
-git cherry-pick f4cdb112493cb491727d8326d1dfc7422aedaa87^..913046a11e3a4099b0a5454cf759f8200de1b27a
-
+#cd /tmp/rom/frameworks/base
+#git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_base
+#git fetch aponlab 11.x --depth=4
+#git cherry-pick 8d1e4b98564a7ba65c2d8d357e83ba7d4d337940
+#
+#cd /tmp/rom/frameworks/opt/telephony
+#git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_opt_telephony
+#git fetch aponlab 11.x --depth=10
+#git cherry-pick f4cdb112493cb491727d8326d1dfc7422aedaa87^..913046a11e3a4099b0a5454cf759f8200de1b27a
+#
 cd /tmp/rom
 rm -rf vendor/codeaurora/telephony
 git clone --depth 1 https://github.com/Apon77Lab/android_vendor_codeaurora_telephony vendor/codeaurora/telephony

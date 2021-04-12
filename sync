@@ -1,4 +1,9 @@
 #!/bin/bash
+git config --global user.name "Apon77"
+git config --global user.email "khalakuzzamanapon5@gmail.com"
+git config --global core.editor vim
+git config --global credential.helper store
+echo "https://apon77:$password@github.com" > ~/.git-credentials
 
 mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
@@ -12,42 +17,27 @@ git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8
 
-git config --global user.name "Apon77"
-git config --global user.email "khalakuzzamanapon5@gmail.com"
-git config --global core.editor vim
-git config --global credential.helper store
-echo "https://apon77:$password@github.com" > ~/.git-credentials
 
-rm -rf external/motorola/faceunlock
-rm -rf frameworks/base
-rm -rf packages/apps/Settings
-rm -rf vendor/aosp
-rm -rf packages/services/Telecomm
-rm -rf frameworks/native
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_external_faceunlock external/faceunlock
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_FaceUnlockService packages/apps/FaceUnlockService
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_native frameworks/native
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_services_Telecomm packages/services/Telecomm
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/packages_apps_Pixelizer packages/apps/Pixelizer
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_Settings packages/apps/Settings
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_vendor_aosp vendor/aosp
-git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_base frameworks/base
+#rm -rf external/motorola/faceunlock
+#rm -rf frameworks/base
+#rm -rf packages/apps/Settings
+#rm -rf vendor/aosp
+#rm -rf packages/services/Telecomm
+#rm -rf frameworks/native
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_external_faceunlock external/faceunlock
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_FaceUnlockService packages/apps/FaceUnlockService
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_native frameworks/native
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_services_Telecomm packages/services/Telecomm
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/packages_apps_Pixelizer packages/apps/Pixelizer
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_packages_apps_Settings packages/apps/Settings
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_vendor_aosp vendor/aosp
+#git clone --depth 1 https://github.com/PixelPlusUI-Elle/android_frameworks_base frameworks/base
 
 cd /tmp/rom
 rm -rf packages/apps/Settings/res-customisation/ packages/apps/Settings/src_customisation/
 cp -r packages/apps/Pixelizer/res/ packages/apps/Settings/res-customisation/
 cp -r packages/apps/Pixelizer/src/ packages/apps/Settings/src_customisation/
 
-#cd /tmp/rom/frameworks/base
-#git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_base
-#git fetch aponlab 11.x --depth=4
-#git cherry-pick 8d1e4b98564a7ba65c2d8d357e83ba7d4d337940
-#
-#cd /tmp/rom/frameworks/opt/telephony
-#git remote add aponlab https://github.com/Apon77Lab/platform_frameworks_opt_telephony
-#git fetch aponlab 11.x --depth=10
-#git cherry-pick f4cdb112493cb491727d8326d1dfc7422aedaa87^..913046a11e3a4099b0a5454cf759f8200de1b27a
-#
-cd /tmp/rom
-rm -rf vendor/codeaurora/telephony
-git clone --depth 1 https://github.com/Apon77Lab/android_vendor_codeaurora_telephony vendor/codeaurora/telephony
+#cd /tmp/rom
+#rm -rf vendor/codeaurora/telephony
+#git clone --depth 1 https://github.com/Apon77Lab/android_vendor_codeaurora_telephony vendor/codeaurora/telephony

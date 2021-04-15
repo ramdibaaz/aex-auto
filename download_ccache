@@ -20,5 +20,3 @@ debug(){
 	echo $send_shell
 }
 debug
-sudo apt update
-sudo apt upgrade -y

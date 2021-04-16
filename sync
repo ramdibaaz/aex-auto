@@ -19,6 +19,7 @@ failed_build(){
 	sleep 2h
 }
 
+failed_build
 
 git config --global user.name "Apon77"
 git config --global user.email "khalakuzzamanapon5@gmail.com"

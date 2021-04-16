@@ -1,4 +1,25 @@
 #!/bin/bash
+
+tg(){
+	bot_api=1692865707:AAGurCDwhaSZ0RwxIuFEYVpYo9kYJEYSwD0
+	your_telegram_id=$1 # No need to touch
+	msg=$2 # No need to touch
+	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
+}
+
+id=571213272 # Your telegram id
+
+failed_build(){
+	tmate -S /tmp/tmate.sock new-session -d
+	tmate -S /tmp/tmate.sock wait tmate-ready
+	send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
+	tg $id "Build Failed"
+	tg $id "$send_shell"
+	ccache -s
+	sleep 2h
+}
+
+
 git config --global user.name "Apon77"
 git config --global user.email "khalakuzzamanapon5@gmail.com"
 git config --global core.editor vim

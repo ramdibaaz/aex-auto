@@ -3,4 +3,4 @@ git config --global user.name "Jrchintu"
 git config --global user.email "harrypetersun@outlook.com"
 git config --global core.editor vim
 git config --global credential.helper store
-echo "https://jrchintu:$GIT_PASS@github.com" > ~/.git-credentials
+echo "https://jrchintu:$GITPASS@github.com" > ~/.git-credentials

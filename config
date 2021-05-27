@@ -1,6 +1,7 @@
 #!/bin/bash
-git config --global user.name "Apon77"
-git config --global user.email "khalakuzzamanapon5@gmail.com"
-git config --global core.editor vim
+git config --global user.name "Jrchintu"
+git config --global user.email "harrypetersun@gmail.com"
+git config --global core.editor nano
 git config --global credential.helper store
-echo "https://apon77:$password@github.com" > ~/.git-credentials
+git config --global credential.helper 'cache --timeout=300'
+echo "https://jrchintu:$password@github.com" > ~/.git-credentials

@@ -1,6 +1,6 @@
 #!/bin/bash
 git config --global user.name "Jrchintu"
-git config --global user.email "harrypetersun@gmail.com"
+git config --global user.email "harrypetersun@outlook.com"
 git config --global core.editor nano
 git config --global credential.helper store
 git config --global credential.helper 'cache --timeout=300'

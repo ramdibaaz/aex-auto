@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /dev/shm
+git clone --filter=tree:0 https://github.com/AospExtended/platform_packages_apps_Settings -b 11.x base
+cd base
+git remote add B3 https://github.com/ChintuOs/platform_packages_apps_Settings
+git fetch B3 11.x --depth=4
+git cherry-pick 5e8a401132a3775ddec0287e596014c4a2e18d3e
+git cherry-pick 3cf82f6ea286e4fddc5699ebd49a409cc3d94af5
+git checkout -b auto
+git push B3 -f
